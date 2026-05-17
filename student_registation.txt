@@ -1,0 +1,110 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main()
+{ int choice,count=0,max_count=0,remove,a=0,click=0;
+  string student[20];
+  int age[20];
+  int gender[20];
+  for(int l=0;l<100;l++) // to loop the system..
+  {
+  cout<<"Student Management System (limit 20 student)."<<endl;
+  for(int i=0;i<=50;i++)
+  {
+    cout<<"-";
+  }
+  cout<<endl;
+  
+  cout<<"1. Add student"<<endl
+  <<"2. Look student table"<<endl
+  <<"3. Remove student"<<endl
+  <<"4. Search student"<<endl
+  <<"Enter number: ";
+
+  cin>>choice;                 //function choice...
+  if(choice<1 || choice>4)
+  { cout<<"Error";
+    break;
+  }  
+  if(choice==1)                      //choice 1....(add student)
+  {  
+    if(a>0)                          //for second time, edit array start count...
+    {
+      max_count=count;
+    }
+    cout<<"How many Student do you want to add? ";
+    cin>>count;
+    count=count+max_count;
+
+    for(int i=max_count;i<=count-1;i++)
+    { cout<<"Enter Student "<<i+1<<" name: ";
+      cin>>student[i];
+
+      cout<<"Enter age: ";
+      cin>>age[i];
+
+      cout<<"What is gender?"<<endl
+      <<"1. Male"<<endl<<"2. Female"<<endl
+      <<"Enter number:";
+      cin>>gender[i];
+
+      cout<<"--------------------"<<endl<<endl;
+      a++;
+      system("cls");
+    }
+  }  
+   
+    else if(choice==2)    //choice 2(traverse student table)
+    { system("cls");
+      if(count!=0)
+      {
+
+      cout<<"                "<<"Name     "<<"age     "<<"gender"<<endl;
+      for(int i=0;i<=count-1;i++)
+      {
+        cout<<"Student "<<i+1<<" Data = "<<student[i]<<"     "<<age[i]<<"     ";
+        if(gender[i]==1)
+        {
+          cout<<"Male"<<endl;
+        }
+        else{
+          cout<<"Female"<<endl;
+        }
+       }
+      }
+
+      else{cout<<"List is empty !!!";}
+      cout<<"--------------------"<<endl<<endl;
+    }
+    else if(choice==3)
+    {
+      cout<<"Enter the student ID to remove:";
+      cin>>remove;
+     
+      if(remove-1<count)
+     {
+       for(int i=remove-1;i<=count-1;i++)
+       {
+        student[i]=student[i+1];
+        age[i]=age[i+1];
+        gender[i]=gender[i+1];    //for replacement
+       }
+       count=count-1;    //to reduce the total student number...
+       cout<<"Remove Process is finished!..."<<endl;
+       cout<<"Enter 1 to contiue ! :";
+       cin>>click;
+       
+       cout<<"-------------------------"<<endl;
+     }  
+     else
+     {cout<<"Something wrong!.. You remove the student which do not have in the list!.";}
+      system("cls");
+    
+    }
+    
+
+    
+  } // loop for all function choice
+
+return 0;
+}
